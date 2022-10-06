@@ -20,6 +20,16 @@ public static class BD
             } 
             return Lista;
         }
+        public static Board GetBoardById(int id)
+        {
+            Board b = null;
+            string SQL = "SELECT * FROM Board WHERE IdBoard = @pId"; 
+            using(SqlConnection db = new SqlConnection(_connectionString))
+            {
+                b = db.QueryFirstOrDefault<Board>(SQL, new{@pId = id}); 
+            } 
+            return b;
+        }
         public static List<Post> GetPostsByBoard(int Id)
         {
             List<Post> Lista = null;

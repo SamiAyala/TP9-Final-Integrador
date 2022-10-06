@@ -19,10 +19,10 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult CargarBoard(Board item)
+    public IActionResult CargarBoard(int id)
     {
-        ViewBag.Board=item;
-        ViewBag.ListPosts=BD.GetPostsByBoard(item.IdBoard);
+        ViewBag.Board=BD.GetBoardById(id);
+        ViewBag.ListPosts=BD.GetPostsByBoard(id);
         return View("Board");
     }
 
