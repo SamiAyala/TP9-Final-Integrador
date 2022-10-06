@@ -24,7 +24,7 @@ public static class BD
         {
             List<Post> Lista = null;
             string SQL = "SELECT * FROM Post P INNER JOIN Board B ON P.IdBoard=B.IdBoard"; 
-            SQL +=" WHERE P.IdBoard=@pId";
+            SQL +=" WHERE P.IdBoard=@pId ORDER BY P.FechaCreacion";
 
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
@@ -55,6 +55,18 @@ public static class BD
                     pTitulo = item.Titulo
                 }); 
             }   
+        }
+        public static List<Post> getPostsByUser(int Id)
+        {
+            List<Post> Lista = null;
+            string SQL = "SELECT * FROM Post P INNER JOIN Usuario U ON P.IdUsuario=U.IdUsuario"; 
+            SQL +=" WHERE P.IdBoard=@pId ORDER BY P.FechaCreacion";
+
+            using(SqlConnection db = new SqlConnection(_connectionString))
+            {
+                Lista = db.Query<Post>(SQL, new { pId = Id }).ToList();
+            } 
+            return Lista;
         }
     }
 }

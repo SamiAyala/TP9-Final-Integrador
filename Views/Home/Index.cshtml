@@ -6,6 +6,6 @@
     <h1 class="display-4">Welcome</h1>
     @foreach (Board item in ViewBag.ListBoard)
     {
-        <button type="button" href="Board">@item.Nombre</button>
+        <a href='@Url.Action("CargarBoard","Home",new {item=@item})'>@item.Nombre</a>
     }
 </div>

@@ -19,6 +19,13 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult CargarBoard(Board item)
+    {
+        ViewBag.Board=item;
+        ViewBag.ListPosts=BD.GetPostsByBoard(item.IdBoard);
+        return View("Board");
+    }
+
     public IActionResult Privacy()
     {
         return View();
