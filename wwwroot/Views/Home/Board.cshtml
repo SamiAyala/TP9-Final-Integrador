@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.Board.Nombre</h1>
+<button class="btn btn-primary my-3 mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+    Create Post
+</button>
+</div>
+<div class="collapse mb-3 mx-auto" id="collapseForm" style="width:40%;">
+<div class="card card-body">
+    <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")'> <!--onload="agregarListener()">-->
+            @if(ViewBag.User == null) {
+                <input type="hidden" name="IdUsuario" value="null">
+            } else {
+                <input type="hidden" name="IdUsuario" value="ViewBag.User.IdUsuario">
+            }
+            <input type="hidden" name="IdBoard" value="@ViewBag.Board.IdBoard">
+            <input type="hidden" name="FechaCreacion" value="11-9-2001">
+            <input required type="text" name="Titulo" class="form-control fw-bold" placeholder="Title">
+            <br>
+            <textarea required class="form-control" name="Descripcion" rows="5" cols="50" placeholder="Text" class="my-2"></textarea>
+            <br>
+            <input type="file" class="float-start">
+            <input type="submit" class="float-end">
+    </form>
+</div>
+</div>
+
+@foreach (Post item in ViewBag.ListPosts)
+{
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="@item.Imagen" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@item.Titulo</h5>
+            <p class="card-text">@item.Descripcion</p>
+        </div>
+        <div class="card-footer">
+            <h6 class="card-subtitle mb-2 text-muted">@item.FechaCreacion.ToShortDateString()</h6>
+        </div>
+    </div>
+}
+
+<!--<script>
+    function agregarListener()
+    {
+        let f = document.getElementById("form");
+        f.onsubmit = function(event){
+               
+        }
+    }
+</script>-->
