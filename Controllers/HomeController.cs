@@ -25,6 +25,11 @@ public class HomeController : Controller
         ViewBag.ListPosts=BD.GetPostsByBoard(id);
         return View("Board");
     }
+    public IActionResult CargarPost(int id)
+    {
+        ViewBag.Post=BD.GetPostById(id);
+        return View("Post");
+    }
 
     public IActionResult Privacy()
     {

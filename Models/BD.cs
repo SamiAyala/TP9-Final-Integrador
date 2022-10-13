@@ -30,11 +30,21 @@ public static class BD
             } 
             return b;
         }
+        public static Post GetPostById(int id)
+        {
+            Post p = null;
+            string SQL = "SELECT * FROM Post WHERE IdPost = @pId";
+            using(SqlConnection db= new SqlConnection(_connectionString))
+            {
+                p = db.QueryFirstOrDefault<Post> (SQL, new {@pId = id});
+            }
+            return p;
+        }
         public static List<Post> GetPostsByBoard(int Id)
         {
             List<Post> Lista = null;
             string SQL = "SELECT * FROM Post P INNER JOIN Board B ON P.IdBoard=B.IdBoard"; 
-            SQL +=" WHERE P.IdBoard=@pId ORDER BY P.FechaCreacion";
+            SQL +=" WHERE P.IdBoard=@pId AND P.fkPost is NULL ORDER BY P.FechaCreacion";
 
             using(SqlConnection db = new SqlConnection(_connectionString))
             {

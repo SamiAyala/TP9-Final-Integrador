@@ -39,6 +39,7 @@
         </div>
         <div class="card-footer">
             <h6 class="card-subtitle mb-2 text-muted">@item.FechaCreacion.ToShortDateString()</h6>
+            <a class="btn btn-primary" href='@Url.Action("CargarPost", "Home", new{id=@item.IdPost})'>See Post</a>
         </div>
     </div>
 }
