@@ -26,6 +26,12 @@ public class HomeController : Controller
         return View("Board");
     }
 
+    public IActionResult AgregarPost(Post p){
+        p.FechaCreacion = DateTime.Now;
+        BD.InsertPost(p);
+        return RedirectToAction("CargarBoard(p.IdBoard)");
+    }
+
     public IActionResult Privacy()
     {
         return View();
