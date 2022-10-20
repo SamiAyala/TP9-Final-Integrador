@@ -8,7 +8,7 @@ namespace TP9_Final_Integrador.Models
 {
 public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-038; DataBase=BD;Trusted_Connection=True;";
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-037; DataBase=BD;Trusted_Connection=True;";
 
         public static List<Board> GetBoards()
         {
@@ -52,6 +52,18 @@ public static class BD
             } 
             return Lista;
         }
+        public static List<Post> getPostsByFkPost(int Id)
+        {
+            List <Post> Lista = null;
+            string SQL = "select P.* from Post P inner join Post P2 on P.fkPost=p2.idPost";
+            SQL +=" where P2.idPost=@pId and P.fkPost=P2.idPost and P2.fkPost is null";
+
+            using(SqlConnection db = new SqlConnection (_connectionString))
+            {
+                Lista = db.Query<Post>(SQL, new {pId = Id }).ToList();
+            }
+            return Lista;
+        }
         public static void DeletePostById(int Id)
         {
             string SQL = "DELETE FROM Post WHERE IdPost=@pId"; 
@@ -87,6 +99,18 @@ public static class BD
                 Lista = db.Query<Post>(SQL, new { pId = Id }).ToList();
             } 
             return Lista;
+        }
+        public static User getUserById(int Id)
+        {
+            User U = null;
+            string SQL = "SELECT * FROM Usuario U";
+            SQL += " WHERE U.IdUsuario=@pId";
+
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                U = db.QueryFirstOrDefault<User> (SQL, new {pId=Id});
+            }
+            return U;
         }
     }
 }
