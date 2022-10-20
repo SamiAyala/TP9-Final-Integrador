@@ -25,10 +25,10 @@
     </div>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-around">
         @foreach (Post item in ViewBag.ListPosts)
         {
-            <div class="card col-3 mx-1 mb-2 p-0">
+            <div class="card col-3 mx-2 mb-4 p-0">
                 <img class="card-img-top" src="@item.Imagen" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">@item.Titulo</h5>
