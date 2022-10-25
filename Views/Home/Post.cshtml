@@ -2,7 +2,40 @@
     ViewData["Title"] = "Home Page";
 
 }
-<div>
-    <img src="@ViewBag.Post.Imagen">
-    <p></p>
+<div class="row">
+    <div class="col-3">
+        <img class="img-fluid" src="@ViewBag.Post.Imagen" alt="No Image Available">
+    </div>
+    <div class="col-6">
+        <h5>@ViewBag.Post.Titulo</h5>
+        <p>@ViewBag.Post.Descripcion</p>
+    </div>
+    <div class="col-3">
+        <p class="float-end mt-3">@ViewBag.Post.Nombre</p>
+    </div>
+</div>
+<div class="row mt-5">
+    <p>Comments:</p>
+    @{
+        if (ViewBag.ListReplies.Count == 0)
+        { 
+            <h6 class="text-center">No Comments Available</h6>
+        }
+        else
+        {
+            foreach (Post item in ViewBag.ListReplies)
+            {
+                <div class="row border-bottom mt-3 mx-3">
+                    <div class="col-2">
+                        <img class="img-fluid" src="@item.Imagen" alt="No Image Available">
+                        <p>@item.Nombre</p>
+                    </div>
+                    <div class="col">
+                        <h5>@item.Titulo</h5>
+                        <p>@item.Descripcion</p>
+                    </div>
+                </div>
+            }
+        }
+    }
 </div>

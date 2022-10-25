@@ -26,10 +26,13 @@ namespace TP9_Final_Integrador.Models{
         private int _FkPost;
         public int FkPost { get { return _FkPost;} set { _FkPost=value;}}
 
+        private string _Nombre;
+        public string Nombre { get { return _Nombre; } set { _Nombre = value; }}
+
         public Post()
         {}
 
-        public Post(int IdPost,int IdBoard,int IdUsuario, string Imagen, string Descripcion, DateTime FechaCreacion, string Titulo, int FkPost)
+        public Post(int IdPost,int IdBoard,int IdUsuario, string Imagen, string Descripcion, DateTime FechaCreacion, string Titulo, int FkPost, string Nombre)
         {
             _IdPost=IdPost;
             _IdBoard=IdBoard;
@@ -39,6 +42,7 @@ namespace TP9_Final_Integrador.Models{
             _FechaCreacion=FechaCreacion;
             _Titulo=Titulo;
             _FkPost=FkPost;
+            _Nombre=Nombre;
         }
     }
 }

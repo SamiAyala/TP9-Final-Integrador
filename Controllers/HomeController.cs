@@ -28,6 +28,7 @@ public class HomeController : Controller
     public IActionResult CargarPost(int id)
     {
         ViewBag.Post=BD.GetPostById(id);
+        ViewBag.ListReplies=BD.getPostsByFkPost(id);
         return View("Post");
     }
 
