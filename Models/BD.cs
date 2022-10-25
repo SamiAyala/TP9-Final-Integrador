@@ -8,7 +8,11 @@ namespace TP9_Final_Integrador.Models
 {
 public static class BD
     {
+<<<<<<< HEAD
         private static string _connectionString = @"Server=DESKTOP-BS3AF2L\SQLEXPRESS; DataBase=BD;Trusted_Connection=True;";
+=======
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-004; DataBase=BD;Trusted_Connection=True;";
+>>>>>>> f789ea07d7ff0aac6eb8dbec4d2f063942aab5ac
 
         public static List<Board> GetBoards()
         {
@@ -33,7 +37,7 @@ public static class BD
         public static Post GetPostById(int id)
         {
             Post p = null;
-            string SQL = "SELECT * FROM Post WHERE IdPost = @pId";
+            string SQL = "SELECT P.*,U.Nombre FROM Post P inner join Usuario U on P.IdUsuario=U.IdUsuario WHERE IdPost = @pId";
             using(SqlConnection db= new SqlConnection(_connectionString))
             {
                 p = db.QueryFirstOrDefault<Post> (SQL, new {@pId = id});
@@ -44,7 +48,7 @@ public static class BD
         {
             List<Post> Lista = null;
             string SQL = "SELECT * FROM Post P INNER JOIN Board B ON P.IdBoard=B.IdBoard"; 
-            SQL +=" WHERE P.IdBoard=@pId AND P.fkPost is NULL ORDER BY P.FechaCreacion";
+            SQL +=" WHERE P.IdBoard=@pId AND P.FkPost is NULL ORDER BY P.FechaCreacion";
 
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
@@ -55,7 +59,7 @@ public static class BD
         public static List<Post> getPostsByFkPost(int Id)
         {
             List <Post> Lista = null;
-            string SQL = "select P.* from Post P inner join Post P2 on P.fkPost=p2.idPost";
+            string SQL = "select P.*,U.Nombre from Post P inner join Post P2 on P.fkPost=p2.idPost inner join Usuario U on P.idUsuario=U.IdUsuario";
             SQL +=" where P2.idPost=@pId and P.fkPost=P2.idPost and P2.fkPost is null";
 
             using(SqlConnection db = new SqlConnection (_connectionString))

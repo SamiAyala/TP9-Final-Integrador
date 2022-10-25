@@ -10,10 +10,10 @@
 </div>
 <div class="collapse mb-3 mx-auto" id="collapseForm" style="width:40%;">
     <div class="card card-body">
-        <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")'> <!--onload="agregarListener()">-->
-                <input type="hidden" name="IdUsuario" value='1'>
+        <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")'>
+                <input type="hidden" name="IdUsuario" value='1'>            
                 <input type="hidden" name="IdBoard" value="@ViewBag.Board.IdBoard">
-                <input type="hidden" name="fkPost" value='null'>
+                <input type="hidden" name="FkPost" value='null'>
                 <input type="hidden" name="FechaCreacion" value="11-9-2001">
                 <input required type="text" name="Titulo" class="form-control fw-bold" placeholder="Title">
                 <br>
@@ -29,7 +29,7 @@
         @foreach (Post item in ViewBag.ListPosts)
         {
             <div class="card col-3 mx-2 mb-4 p-0">
-                <img class="card-img-top" src="@item.Imagen" alt="Card image cap">
+                <img class="card-img-top" src="@item.Imagen" alt="No Image Available">
                 <div class="card-body">
                     <h5 class="card-title">@item.Titulo</h5>
                     <p class="card-text">@item.Descripcion</p>
@@ -42,13 +42,3 @@
         }
     </div>
 </div>
-
-<!--<script>
-    function agregarListener()
-    {
-        let f = document.getElementById("form");
-        f.onsubmit = function(event){
-               
-        }
-    }
-</script>-->
