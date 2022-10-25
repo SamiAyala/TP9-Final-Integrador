@@ -44,7 +44,7 @@ public static class BD
         {
             List<Post> Lista = null;
             string SQL = "SELECT * FROM Post P INNER JOIN Board B ON P.IdBoard=B.IdBoard"; 
-            SQL +=" WHERE P.IdBoard=@pId AND P.fkPost is NULL ORDER BY P.FechaCreacion";
+            SQL +=" WHERE P.IdBoard=@pId AND P.FkPost is NULL ORDER BY P.FechaCreacion";
 
             using(SqlConnection db = new SqlConnection(_connectionString))
             {

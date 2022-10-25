@@ -1,10 +1,10 @@
 @{
     ViewData["Title"] = "Home Page";
-
 }
 <div class="row">
     <div class="col-3">
         <img class="img-fluid" src="@ViewBag.Post.Imagen" alt="No Image Available">
+        <h6 class="text-muted">@ViewBag.Post.FechaCreacion.ToShortDateString()</h6>
     </div>
     <div class="col-6">
         <h5>@ViewBag.Post.Titulo</h5>
@@ -15,11 +15,11 @@
     </div>
 </div>
 <div class="row mt-5">
-    <p>Comments:</p>
+    <p>Replies:</p>
     @{
         if (ViewBag.ListReplies.Count == 0)
-        { 
-            <h6 class="text-center">No Comments Available</h6>
+        {
+            <h6 class="text-center">No Replies Available</h6>
         }
         else
         {
@@ -28,6 +28,7 @@
                 <div class="row border-bottom mt-3 mx-3">
                     <div class="col-2">
                         <img class="img-fluid" src="@item.Imagen" alt="No Image Available">
+                        <h6 class="text-muted">@item.FechaCreacion.ToShortDateString()</h6>
                         <p>@item.Nombre</p>
                     </div>
                     <div class="col">
@@ -37,5 +38,25 @@
                 </div>
             }
         }
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+                    Create Reply
+                </button>
     }
+</div>
+<div class="collapse mb-3 mx-auto" id="collapseForm" style="width:40%;">
+    <div class="card card-body">
+        <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")'>
+            <input type="hidden" name="IdUsuario" value='1'>
+            <input type="hidden" name="IdBoard" value="@ViewBag.Post.IdBoard">
+            <input type="hidden" name="FkPost" value='@ViewBag.Post.IdPost'>
+            <input type="hidden" name="FechaCreacion" value="11-9-2001">
+            <input required type="text" name="Titulo" class="form-control fw-bold" placeholder="Title">
+            <br>
+            <textarea required class="form-control" name="Descripcion" rows="5" cols="50" placeholder="Text"
+                class="my-2"></textarea>
+            <br>
+            <input type="file" class="float-start">
+            <input type="submit" class="float-end">
+        </form>
+    </div>
 </div>
