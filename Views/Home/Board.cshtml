@@ -11,7 +11,7 @@
 <div class="collapse mb-3 mx-auto" id="collapseForm" style="width:40%;">
     <div class="card card-body">
         <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")'> <!--onload="agregarListener()">-->
-                <input type="hidden" name="IdUsuario" value='1'>            
+                <input type="hidden" name="IdUsuario" value='1'>
                 <input type="hidden" name="IdBoard" value="@ViewBag.Board.IdBoard">
                 <input type="hidden" name="fkPost" value='null'>
                 <input type="hidden" name="FechaCreacion" value="11-9-2001">
@@ -19,8 +19,8 @@
                 <br>
                 <textarea required class="form-control" name="Descripcion" rows="5" cols="50" placeholder="Text" class="my-2"></textarea>
                 <br>
-                <input type="file" class="float-start">
-                <input type="submit" class="float-end">
+                <input type="file" class="float-start" multiple>
+                <input type="submit" class="float-end px-2" value="Post">
         </form>
     </div>
 </div>
