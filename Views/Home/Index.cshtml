@@ -9,3 +9,28 @@
         <a href='@Url.Action("CargarBoard", "Home", new{id=@item.IdBoard})'>@item.Nombre</a>
     }
 </div>
+<div class="row mt-3">
+    <div class="col text-center">
+        <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm"
+            aria-expanded="false" aria-controls="collapseForm">
+            Add Board
+        </button>
+    </div>
+</div>
+<div class="collapse mb-3 mx-auto" id="collapseForm" style="width:40%;">
+    <div class="card card-body">
+        <form method="post" id="form" action='@Url.Action("AgregarBoard", "Home")'>
+            <input required type="text" name="Nombre" class="form-control fw-bold" placeholder="Name">
+            <br>
+                <select required name="CantMaxPosts" class="form-control">
+                    <option selected disabled value="">Choose a number of maximum posts</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                </select>
+            <br>
+            <input type="submit" class="float-end">
+        </form>
+    </div>
+</div>

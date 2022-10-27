@@ -89,6 +89,18 @@ public static class BD
                 }); 
             }   
         }
+        public static void InsertBoard(Board item)
+        {
+            string SQL = "INSERT INTO Board(Nombre, CantMaximaPosts)";
+            SQL += " VALUES (@pNombre, @pCantMaximaPosts)"; 
+            using(SqlConnection db = new SqlConnection(_connectionString))
+            {
+                db.Execute(SQL, new {
+                    pNombre=item.Nombre,
+                    pCantMaximaPosts=item.CantMaxPosts
+                }); 
+            }   
+        }
         public static void InsertUser(User item)
         {
             string SQL = "INSERT INTO User(Nombre, imgUsuario, Contraseña)";
