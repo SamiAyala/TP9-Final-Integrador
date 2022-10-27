@@ -8,7 +8,7 @@ namespace TP9_Final_Integrador.Models
 {
 public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-004; DataBase=BD;Trusted_Connection=True;";
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-037; DataBase=BD;Trusted_Connection=True;";
 
         public static List<Board> GetBoards()
         {
@@ -88,18 +88,26 @@ public static class BD
                 }); 
             }   
         }
-        public static void InsertUser(User item)
+        public static bool InsertUser(User item, string Constraseña2)
         {
-            string SQL = "INSERT INTO User(Nombre, imgUsuario, Contraseña)";
-            SQL += " VALUES (@pNombre, @pImgUsuario, @pContraseña)"; 
+        
+            string SQL = "SELECT COUNT(Nombre) FROM Usuario U WHERE U.Nombre = @pNombre";
+            if (item.Contraseña != Constraseña2) return false;
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
+                int i = db.QueryFirstOrDefault(SQL, new {
+                    pNombre = item.Nombre
+                }); 
+                if (i > 0) return false;
+                SQL = "INSERT INTO User(Nombre, imgUsuario, Contraseña)";
+                SQL += " VALUES (@pNombre, @pImgUsuario, @pContraseña)";
                 db.Execute(SQL, new {
                     pNombre = item.Nombre,
                     pImgUsuario = item.ImgUsuario,
                     pContraseña = item.Contraseña
-                }); 
-            }   
+                });
+            }
+            return true;
         }
         public static List<Post> getPostsByUser(int Id)
         {

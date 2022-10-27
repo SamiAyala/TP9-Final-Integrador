@@ -38,6 +38,10 @@ public class HomeController : Controller
         return RedirectToAction("CargarBoard", "Home", new{id = p.IdBoard});
     }
 
+    public bool Registrar(User u, String Constraseña2){
+        return BD.InsertUser(u, Constraseña2);
+    }
+
     public IActionResult Privacy()
     {
         return View();

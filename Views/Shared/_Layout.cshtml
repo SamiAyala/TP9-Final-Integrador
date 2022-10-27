@@ -47,20 +47,20 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")'>
+                        <form method="post" id="form" action=''>
                             <label>Username:</label>
-                            <input required type="text" name="Nombre" class="form-control" placeholder="Username">
+                            <input required type="text" id="Nombre" name="Nombre" class="form-control" placeholder="Username">
                             <br>
                             <label>Password:</label>
-                            <input required type="password" name="Contraseña" class="form-control" placeholder="Password">
-                            <input required type="password" name="Contraseña2" class="form-control mt-3" placeholder="Confirm password">
+                            <input required type="password" id="Constraseña" name="Contraseña" class="form-control" placeholder="Password">
+                            <input required type="password" id="Constraseña2" name="Contraseña2" class="form-control mt-3" placeholder="Confirm password">
                             <br>
                             <label for="formFile" class="form-label">Profile picture:</label>
-                            <input class="form-control" type="file" id="formFile">
+                            <input class="form-control" type="file" name="imgUsuario" id="imgUsuario">
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary">Register</button>
+                        <button type="button" class="btn btn-outline-primary" onclick="Registrar()">Register</button>
                     </div>
                     </div>
                 </div>

@@ -12,3 +12,24 @@
 async function checkHashed(input, result) {
   return await SHA256(input) == result;
 }
+
+function Registrar(){
+	var nombre = $("#Nombre").val();
+	var nombre = $("#Nombre").val();
+  $.ajax(
+    {
+        type: 'POST',
+        datatype: 'JSON',
+        url: '/Home/Resgistrar',
+        data: { Nombre : nombre },
+        success:
+            function(response) {
+                
+            },
+        error:
+        function(xhr, status) {
+            alert('Something happened, wasnt good, sorry :(');
+        }
+    }
+);
+}
