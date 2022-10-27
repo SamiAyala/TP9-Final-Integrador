@@ -8,7 +8,11 @@ namespace TP9_Final_Integrador.Models
 {
 public static class BD
     {
+<<<<<<< HEAD
         private static string _connectionString = @"Server=A-PHZ2-CIDI-037; DataBase=BD;Trusted_Connection=True;";
+=======
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-038; DataBase=BD;Trusted_Connection=True;";
+>>>>>>> 67f931d2d2ebd1b27e767c701a782d9407522fa8
 
         public static List<Board> GetBoards()
         {
@@ -74,8 +78,8 @@ public static class BD
         }
         public static void InsertPost(Post item)
         {
-            string SQL = "INSERT INTO Post(IdBoard, IdUsuario, imagen, Descripcion, FechaCreacion, Titulo)";
-            SQL += " VALUES (@pIdBoard, @pIdUsuario, @pImagen, @pDescripcion,@pFechaCreacion,@pTitulo)"; 
+            string SQL = "INSERT INTO Post(IdBoard, IdUsuario, imagen, Descripcion, FechaCreacion, Titulo, FkPost)";
+            SQL += " VALUES (@pIdBoard, @pIdUsuario, @pImagen, @pDescripcion,@pFechaCreacion,@pTitulo,@pFkPost)"; 
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
                 db.Execute(SQL, new {
@@ -84,7 +88,20 @@ public static class BD
                     pImagen = item.Imagen,
                     pDescripcion = item.Descripcion,
                     pFechaCreacion =item.FechaCreacion,
-                    pTitulo = item.Titulo
+                    pTitulo = item.Titulo,
+                    pFkPost=item.FkPost
+                }); 
+            }   
+        }
+        public static void InsertBoard(Board item)
+        {
+            string SQL = "INSERT INTO Board(Nombre, CantMaximaPosts)";
+            SQL += " VALUES (@pNombre, @pCantMaximaPosts)"; 
+            using(SqlConnection db = new SqlConnection(_connectionString))
+            {
+                db.Execute(SQL, new {
+                    pNombre=item.Nombre,
+                    pCantMaximaPosts=item.CantMaxPosts
                 }); 
             }   
         }

@@ -37,6 +37,12 @@ public class HomeController : Controller
         BD.InsertPost(p);
         return RedirectToAction("CargarBoard", "Home", new{id = p.IdBoard});
     }
+    
+    public IActionResult AgregarBoard(Board b){
+        if(b.CantMaxPosts==-1) RedirectToAction("Index","Home");
+        BD.InsertBoard(b);
+        return RedirectToAction("Index","Home");
+    }
 
     public bool Registrar(User u, String Constraseña2){
         return BD.InsertUser(u, Constraseña2);
