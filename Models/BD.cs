@@ -8,7 +8,7 @@ namespace TP9_Final_Integrador.Models
 {
 public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-004; DataBase=BD;Trusted_Connection=True;";
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-038; DataBase=BD;Trusted_Connection=True;";
 
         public static List<Board> GetBoards()
         {
@@ -74,8 +74,8 @@ public static class BD
         }
         public static void InsertPost(Post item)
         {
-            string SQL = "INSERT INTO Post(IdBoard, IdUsuario, imagen, Descripcion, FechaCreacion, Titulo)";
-            SQL += " VALUES (@pIdBoard, @pIdUsuario, @pImagen, @pDescripcion,@pFechaCreacion,@pTitulo)"; 
+            string SQL = "INSERT INTO Post(IdBoard, IdUsuario, imagen, Descripcion, FechaCreacion, Titulo, FkPost)";
+            SQL += " VALUES (@pIdBoard, @pIdUsuario, @pImagen, @pDescripcion,@pFechaCreacion,@pTitulo,@pFkPost)"; 
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
                 db.Execute(SQL, new {
@@ -84,7 +84,8 @@ public static class BD
                     pImagen = item.Imagen,
                     pDescripcion = item.Descripcion,
                     pFechaCreacion =item.FechaCreacion,
-                    pTitulo = item.Titulo
+                    pTitulo = item.Titulo,
+                    pFkPost=item.FkPost
                 }); 
             }   
         }
