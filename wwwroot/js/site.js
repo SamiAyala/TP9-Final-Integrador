@@ -15,16 +15,19 @@ async function checkHashed(input, result) {
 
 function Registrar(){
 	var nombre = $("#Nombre").val();
-	var nombre = $("#Nombre").val();
+	var contraseña = $("#Contraseña").val();
+  var contraseña2 = $("#Contraseña2").val();
+  var imgUsuario = $("#imgUsuario").val();
   $.ajax(
     {
         type: 'POST',
         datatype: 'JSON',
         url: '/Home/Resgistrar',
-        data: { Nombre : nombre },
+        data: { Nombre : nombre, Contraseña : contraseña, Contraseña2 : contraseña2, imgUsuario : imgUsuario },
         success:
             function(response) {
-                
+                if (response) alert('YES!');
+                else alert('NO :(');
             },
         error:
         function(xhr, status) {

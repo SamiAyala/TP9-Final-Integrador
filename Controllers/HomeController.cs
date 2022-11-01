@@ -44,8 +44,8 @@ public class HomeController : Controller
         return RedirectToAction("Index","Home");
     }
 
-    public bool Registrar(User u, String Constraseña2){
-        return BD.InsertUser(u, Constraseña2);
+    public bool Registrar(String Nombre, String Contraseña, String Contraseña2){
+        return BD.InsertUser(u, Contraseña2);
     }
 
     public IActionResult Privacy()

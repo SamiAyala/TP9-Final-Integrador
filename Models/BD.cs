@@ -8,7 +8,7 @@ namespace TP9_Final_Integrador.Models
 {
 public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-004; DataBase=BD;Trusted_Connection=True;";
+        private static string _connectionString = @"Server=DESKTOP-BS3AF2L\SQLEXPRESS; DataBase=BD;Trusted_Connection=True;";
 
         public static List<Board> GetBoards()
         {
@@ -101,11 +101,11 @@ public static class BD
                 }); 
             }   
         }
-        public static bool InsertUser(User item, string Constraseña2)
+        public static bool InsertUser(User item, string Contraseña2)
         {
         
             string SQL = "SELECT COUNT(Nombre) FROM Usuario U WHERE U.Nombre = @pNombre";
-            if (item.Contraseña != Constraseña2) return false;
+            if (item.Contraseña != Contraseña2) return false;
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
                 int i = db.QueryFirstOrDefault(SQL, new {
