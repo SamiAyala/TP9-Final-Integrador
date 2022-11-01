@@ -6,12 +6,12 @@
     <h1 class="display-4">Welcome</h1>
     @foreach (Board item in ViewBag.ListBoard)
     {
-        <a href='@Url.Action("CargarBoard", "Home", new{id=@item.IdBoard})'>@item.Nombre</a>
+        <a class="btn btn-outline-primary" href='@Url.Action("CargarBoard", "Home", new{id=@item.IdBoard})'>@item.Nombre</a>
     }
 </div>
 <div class="row mt-3">
     <div class="col text-center">
-        <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm"
+        <button class="btn btn-secondary btn-sm mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm"
             aria-expanded="false" aria-controls="collapseForm">
             Add Board
         </button>
