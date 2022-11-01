@@ -23,8 +23,8 @@ namespace TP9_Final_Integrador.Models{
         private string _Titulo;
         public string Titulo { get { return _Titulo;} set { _Titulo=value;}}
 
-        private int _FkPost;
-        public int FkPost { get { return _FkPost;} set { _FkPost=value;}}
+        private Nullable<int> _FkPost;
+        public Nullable<int> FkPost { get { return _FkPost;} set { _FkPost=value;}}
 
         private string _Nombre;
         public string Nombre { get { return _Nombre; } set { _Nombre = value; }}
