@@ -15,6 +15,8 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-image: url('https://wired-7.org/img/home/cyberground1.jpg');
+  font-family: 'VT323', monospace;
 }
 
 .footer {
@@ -23,4 +25,70 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
+}
+
+.boardbox {
+  position: fixed;
+  background-color: #030002e4;
+  font-size: 3.5vmin;
+  border-radius: 1.5vmin;
+  padding: 3vh;
+  border: 2px inset #bd00ff;
+  top: 15vh;
+  right: 74vw;
+  box-shadow: -10px 10px 8px #bd00ff;
+  transform: skew(4deg) rotateY(4deg);
+}
+.addBoard{
+  position: fixed;
+  background-color: #030002e4;
+  font-size: 3.5vmin;
+  border-radius: 1.5vmin;
+  padding: 3vh;
+  border: 2px inset #bd00ff;
+  top: 15vh;
+  right: 74vw;
+  box-shadow: -10px -10px 8px #bd00ff;
+  transform: skew(-4deg) rotateY(-4deg);
+}
+
+li {
+  list-style: none;
+}
+
+.boardbox h3 {
+  margin-top: 0;
+  letter-spacing: -1px;
+  color: #d600ff;
+  text-decoration: underline;
+  font-weight: bold;
+  text-shadow: 0px 0px 20px #d600ff;
+}
+
+.boardbox a {
+  text-decoration: none;
+  color: #ffffff;
+  text-shadow: 0px 0px 15px #000;
+  transition: background-color .5s;
+}
+.boardbox a:hover {
+  padding: 5px;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #00b8ff;
+}
+a{
+  color: #ffffff;
+}
+.aIndex {
+  text-decoration: none;
+  color: #ffffff;
+  text-shadow: 0px 0px 15px #000;
+  transition: background-color .5s;
+}
+.aIndex:hover {
+  padding: 5px;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #00b8ff;
 }

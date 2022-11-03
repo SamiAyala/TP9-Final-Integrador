@@ -2,19 +2,23 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    @foreach (Board item in ViewBag.ListBoard)
-    {
-        <a class="btn btn-outline-primary" href='@Url.Action("CargarBoard", "Home", new{id=@item.IdBoard})'>@item.Nombre</a>
-    }
+<div class="boardbox" id="boardbox_general">
+    <h3 class="display-4">General</h3>
+    <ul>
+        @foreach (Board item in ViewBag.ListBoard)
+        {
+            <li>
+            <a class="aIndex" href='@Url.Action("CargarBoard", "Home", new{id=@item.IdBoard})'>@item.Nombre</a>
+            </li>
+        }
+    </ul>
 </div>
-<div class="row mt-3">
+<div class="addBoard">
     <div class="col text-center">
-        <button class="btn btn-secondary btn-sm mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm"
-            aria-expanded="false" aria-controls="collapseForm">
+        <a class="aIndex" data-bs-toggle="collapse"
+            data-bs-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
             Add Board
-        </button>
+        </a>
     </div>
 </div>
 <div class="collapse mb-3 mx-auto" id="collapseForm" style="width:40%;">
@@ -22,14 +26,14 @@
         <form method="post" id="form" action='@Url.Action("AgregarBoard", "Home")'>
             <input required type="text" name="Nombre" class="form-control fw-bold" placeholder="Name">
             <br>
-                <select required name="CantMaxPosts" class="form-control">
-                    <option selected disabled value="">Choose a number of maximum posts</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                </select>
-                <p class="text-muted">Note: More posts is not always better. It can be slower too.</p>
+            <select required name="CantMaxPosts" class="form-control">
+                <option selected disabled value="">Choose a number of maximum posts</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
+            <p class="text-muted">Note: More posts is not always better. It can be slower too.</p>
             <br>
             <input type="submit" class="float-end">
         </form>
