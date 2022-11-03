@@ -8,7 +8,11 @@ namespace TP9_Final_Integrador.Models
 {
 public static class BD
     {
+<<<<<<< HEAD
         private static string _connectionString = @"Server=A-PHZ2-CIDI-025; DataBase=BD;Trusted_Connection=True;";
+=======
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-026; DataBase=BD;Trusted_Connection=True;";
+>>>>>>> b6364c5bd50be576f33f2e2dc80a24208c2285a1
 
         public static List<Board> GetBoards()
         {
