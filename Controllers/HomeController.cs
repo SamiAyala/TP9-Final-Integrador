@@ -44,14 +44,10 @@ public class HomeController : Controller
         return RedirectToAction("Index","Home");
     }
 
-<<<<<<< HEAD
-    /*public bool Registrar(String Nombre, String Contraseña, String Contraseña2){
-=======
     public bool Registrar(String Nombre, String Contraseña, String Contraseña2, IFormFile ImgUsuario){
         User u = new User(0, Nombre, "pfp.png", Contraseña, false);
->>>>>>> b6364c5bd50be576f33f2e2dc80a24208c2285a1
         return BD.InsertUser(u, Contraseña2);
-    }*/
+    }
 
     public IActionResult Privacy()
     {

@@ -13,10 +13,10 @@ async function checkHashed(input, result) {
   return await SHA256(input) == result;
 }
 
-function Registrar(){
+async function Registrar(){
 	var nombre = $("#Nombre").val();
-	var contraseña = SHA256($("#Contraseña").val());
-  var contraseña2 = SHA256($("#Contraseña2").val());
+	var contraseña = await SHA256($("#Contraseña").val());
+  var contraseña2 = await SHA256($("#Contraseña2").val());
   var imgUsuario = $("#imgUsuario").val();
   $.ajax(
     {

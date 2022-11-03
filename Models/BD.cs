@@ -8,11 +8,7 @@ namespace TP9_Final_Integrador.Models
 {
 public static class BD
     {
-<<<<<<< HEAD
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-025; DataBase=BD;Trusted_Connection=True;";
-=======
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-026; DataBase=BD;Trusted_Connection=True;";
->>>>>>> b6364c5bd50be576f33f2e2dc80a24208c2285a1
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-028; DataBase=BD;Trusted_Connection=True;";
 
         public static List<Board> GetBoards()
         {
@@ -112,16 +108,17 @@ public static class BD
             if (item.Contraseña != Contraseña2) return false;
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
-                int i = db.QueryFirstOrDefault(SQL, new {
+                int i = db.QueryFirstOrDefault<int>(SQL, new {
                     pNombre = item.Nombre
                 }); 
                 if (i > 0) return false;
-                SQL = "INSERT INTO User(Nombre, imgUsuario, Contraseña)";
-                SQL += " VALUES (@pNombre, @pImgUsuario, @pContraseña)";
+                SQL = "INSERT INTO Usuario(Nombre, imgUsuario, Contraseña, Moderador)";
+                SQL += " VALUES (@pNombre, @pImgUsuario, @pContraseña, @pModerador)";
                 db.Execute(SQL, new {
                     pNombre = item.Nombre,
                     pImgUsuario = item.ImgUsuario,
-                    pContraseña = item.Contraseña
+                    pContraseña = item.Contraseña,
+                    pModerador = item.Moderador
                 });
             }
             return true;
