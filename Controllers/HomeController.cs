@@ -44,7 +44,8 @@ public class HomeController : Controller
         return RedirectToAction("Index","Home");
     }
 
-    public bool Registrar(String Nombre, String Contraseña, String Contraseña2){
+    public bool Registrar(String Nombre, String Contraseña, String Contraseña2, IFormFile ImgUsuario){
+        User u = new User(0, Nombre, "pfp.png", Contraseña, false);
         return BD.InsertUser(u, Contraseña2);
     }
 
