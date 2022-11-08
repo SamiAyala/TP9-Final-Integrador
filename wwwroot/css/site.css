@@ -15,7 +15,7 @@ html {
 
 body {
   margin-bottom: 60px;
-  background-image: url('https://wired-7.org/img/home/cyberground1.jpg');
+  --background-image: url('https://wired-7.org/img/home/cyberground1.jpg');
   font-family: 'VT323', monospace;
 }
 
