@@ -68,6 +68,13 @@ body {
   box-shadow: -10px -10px 8px #00b8ff;
   transform: skew(-4deg) rotateY(-4deg);
 }
+.addBoard a {
+  padding: 5px;
+  text-decoration: none;
+  color: #ffffff;
+  text-shadow: 0px 0px 15px #000;
+  transition: background-color .5s;
+}
 .pForm{
   font-family: 'VT323', monospace;
   color: #8b8b8b;
@@ -148,7 +155,7 @@ a{
   padding: 2%;
 }
 .PrivacyTitle{
-  font-size:xx-large;
+  font-size:72px;
   -webkit-animation:rainbow 3s linear infinite;
 }
 @-webkit-keyframes rainbow {
