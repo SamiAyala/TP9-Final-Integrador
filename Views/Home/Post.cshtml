@@ -1,54 +1,57 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<div class="row">
-    <div class="col-3">
-        <img class="img-fluid" src="@ViewBag.Post.Imagen" alt="No Image Available">
-        <h6 class="text-muted">@ViewBag.Post.FechaCreacion.ToShortDateString()</h6>
-    </div>
-    <div class="col-6">
-        <h5>@ViewBag.Post.Titulo</h5>
-        <p>@ViewBag.Post.Descripcion</p>
-    </div>
-    <div class="col-3">
-        <p class="float-end mt-3">@ViewBag.Post.Nombre</p>
-    </div>
-</div>
-<div class="row mt-5">
-    <p>Replies:</p>
-    @{
-        if (ViewBag.ListReplies.Count == 0)
-        {
-            <h6 class="text-center">No Replies Available</h6>
-        }
-        else
-        {
-            foreach (Post item in ViewBag.ListReplies)
-            {
-                <div class="row border-bottom mt-3 mx-3">
-                    <div class="col-2">
-                        <img class="img-fluid" src="@item.Imagen" alt="No Image Available">
-                        <h6 class="text-muted">@item.FechaCreacion.ToShortDateString()</h6>
-                        <p>@item.Nombre</p>
-                    </div>
-                    <div class="col">
-                        <h5>@item.Titulo</h5>
-                        <p>@item.Descripcion</p>
-                    </div>
-                </div>
-            }
-        }
-        <div class="row mt-3">
-            <div class="col text-center">
-                <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
-                    Create Reply
-                </button>
-            </div>
+<div class="post">
+    <div class="row">
+        <div class="col-3">
+            <img class="img-fluid" src="@ViewBag.Post.Imagen" alt="No Image Available">
+            <h6 class="text-muted">@ViewBag.Post.FechaCreacion.ToShortDateString()</h6>
         </div>
-    }
+        <div class="col-6">
+            <h2>@ViewBag.Post.Titulo</h2>
+            <h3>@ViewBag.Post.Descripcion</h3>
+        </div>
+        <div class="col-3">
+            <h4 class="float-end mt-3">@ViewBag.Post.Nombre</h4>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <h4>Replies:</h4>
+        @{
+            if (ViewBag.ListReplies.Count == 0)
+            {
+                <h4 class="text-center">No Replies Available</h4>
+            }
+            else
+            {
+                foreach (Post item in ViewBag.ListReplies)
+                {
+                    <div class="row border-bottom mx-1 mt-3">
+                        <div class="col-2">
+                            <img class="img-fluid" src="@item.Imagen" alt="No Image Available">
+                            <h5 class="pForm">@item.FechaCreacion.ToShortDateString()</h5>
+                            <h6>@item.Nombre</h6>
+                        </div>
+                        <div class="col">
+                            <h4>@item.Titulo</h4>
+                            <p>@item.Descripcion</p>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <button class="btn btn-dark mb-3" type="button" data-bs-toggle="collapse" id="BoardButton"
+                        data-bs-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+                        Create Reply
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
 </div>
 <div class="collapse mb-3 mx-auto" id="collapseForm" style="width:40%;">
-    <div class="card card-body">
+    <div class="card card-body form">
         <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")'>
             <input type="hidden" name="IdUsuario" value='1'>
             <input type="hidden" name="IdBoard" value="@ViewBag.Post.IdBoard">
@@ -59,8 +62,8 @@
             <textarea required class="form-control" name="Descripcion" rows="5" cols="50" placeholder="Text"
                 class="my-2"></textarea>
             <br>
-            <input type="file" class="float-start">
-            <input type="submit" class="float-end">
+            <input type="file" class="float-start pForm">
+            <input type="submit" class="float-end btn btn-dark " id="BoardButton">
         </form>
     </div>
 </div>
