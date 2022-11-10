@@ -13,7 +13,6 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public User usuario = BD.getUserById(1);
 
     public IActionResult Index()
     {
@@ -36,7 +35,7 @@ public class HomeController : Controller
 
     public IActionResult AgregarPost(Post p){
         p.FechaCreacion = DateTime.Now;
-        p.IdUsuario = usuario.idUsuario;
+        p.IdUsuario = BD.usuario.idUsuario;
         BD.InsertPost(p);
         return RedirectToAction("CargarBoard", "Home", new{id = p.IdBoard});
     }
@@ -51,7 +50,7 @@ public class HomeController : Controller
         string str = null;
         User u = new User(0, Nombre, "pfp.png", Contraseña, false);
         str = BD.InsertUser(u, Contraseña2);
-        if (str == "Ok") usuario = BD.getUserByName(Nombre);
+        if (str == "Ok") BD.usuario = BD.getUserByName(Nombre);
         return str;
     }
 

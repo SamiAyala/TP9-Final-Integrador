@@ -9,7 +9,7 @@ namespace TP9_Final_Integrador.Models
 public static class BD
     {
         private static string _connectionString = @"Server=A-PHZ2-CIDI-033; DataBase=BD;Trusted_Connection=True;";
-
+        public static User usuario = getUserById(1);
         public static List<Board> GetBoards()
         {
             List<Board> Lista = null;
