@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,17 +8,18 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TP9_Final_Integrador.styles.css" asp-append-version="true" />
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-transparent mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TP9_Final_Integrador</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -26,14 +28,17 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">About
+                                Us</a>
                         </li>
                     </ul>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    Login
+                    <button type="button" id="headerButton" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">
+                        Login
                     </button>
-                    <button type="button" class="btn btn-secondary mx-3" data-bs-toggle="modal" data-bs-target="#registerModal">
-                    Register
+                    <button type="button" id="headerButton" class="btn btn-dark mx-3" data-bs-toggle="modal"
+                        data-bs-target="#registerModal">
+                        Register
                     </button>
                 </div>
             </div>
@@ -41,43 +46,52 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            
-            <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+            <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Register</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" id="form" action=''>
-                            <label>Username:</label>
-                            <input required type="text" id="Nombre" name="Nombre" class="form-control" placeholder="Username">
-                            <br>
-                            <label>Password:</label>
-                            <input required type="password" id="Contraseña" name="Contraseña" class="form-control" placeholder="Password">
-                            <input required type="password" id="Contraseña2" name="Contraseña2" class="form-control mt-3" placeholder="Confirm password">
-                            <br>
-                            <label for="formFile" class="form-label">Profile picture:</label>
-                            <input class="form-control" type="file" name="imgUsuario" id="imgUsuario">
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary" onclick="Registrar()">Register</button>
-                    </div>
+                    <div class="modal-content" id="FondoTransparente">
+                        <div class="form">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" id="form" action=''>
+                                    <label>Username:</label>
+                                    <input required type="text" id="Nombre" name="Nombre" class="form-control"
+                                        placeholder="Username">
+                                    <br>
+                                    <label>Password:</label>
+                                    <input required type="password" id="Contraseña" name="Contraseña"
+                                        class="form-control" placeholder="Password">
+                                    <input required type="password" id="Contraseña2" name="Contraseña2"
+                                        class="form-control mt-3" placeholder="Confirm password">
+                                    <br>
+                                    <label for="formFile" class="form-label">Profile picture:</label>
+                                    <input class="form-control pForm" type="file" name="imgUsuario" id="imgUsuario">
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" id="BoardButton"
+                                    onclick="Registrar()">Register</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog modal-sm modal-dialog-centered">
                     <div class="modal-content">
-                    <div class="modal-body" id="notificationModalBody">
-                        You shouldn't be able to see this... oh well ¯\_(ツ)_/¯
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK!</button>
-                    </div>
+                        <div class="modal-body" id="notificationModalBody">
+                            You shouldn't be able to see this... oh well ¯\_(ツ)_/¯
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK!</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,9 +100,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class=" footer">
         <div class="container">
-            &copy; 2022 - TP9_Final_Integrador - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - TP9_Final_Integrador
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -96,4 +110,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

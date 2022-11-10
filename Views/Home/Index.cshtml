@@ -14,11 +14,13 @@
     </ul>
 </div>
 <div class="addBoard">
-    <a class="aIndex"  role="button" data-bs-toggle="modal" data-bs-target="#modalForm">
+    <a type="button" class="aIndex" data-bs-toggle="collapse" data-bs-target="#collapseForm"
+        aria-expanded="false" aria-controls="collapseForm">
         Add Board
     </a>
 </div>
-<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="collapse mb-3 mx-auto" id="collapseForm"  style="width:40%;">
+    <div class="form">
         <form method="post" id="form" action='@Url.Action("AgregarBoard", "Home")'>
             <input required type="text" name="Nombre" class="form-control fw-bold" placeholder="Name">
             <br>
@@ -33,4 +35,5 @@
             <input type="submit" class="btn btn-dark float-end">
             <br>
         </form>
+    </div>
 </div>
