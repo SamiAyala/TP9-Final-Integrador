@@ -64,7 +64,7 @@ body {
   padding: 3vh;
   border: 2px inset #00b8ff;
   bottom: 15vh;
-  right: 5vw;
+  left: 74vw;
   box-shadow: -10px -10px 8px #00b8ff;
   transform: skew(-4deg) rotateY(-4deg);
 }
