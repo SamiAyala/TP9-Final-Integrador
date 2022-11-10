@@ -13,9 +13,15 @@ html {
   min-height: 100%;
 }
 
+
+
 body {
   margin-bottom: 60px;
-  --background-image: url('https://wired-7.org/img/home/cyberground1.jpg');
+  background-image: url('https://i.pinimg.com/originals/4f/09/2e/4f092e13866ce8eaa3344242633a260d.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
   font-family: 'VT323', monospace;
 }
 
@@ -33,10 +39,10 @@ body {
   font-size: 3.5vmin;
   border-radius: 1.5vmin;
   padding: 3vh;
-  border: 2px inset #bd00ff;
+  border: 2px inset #00b8ff;
   top: 15vh;
   right: 74vw;
-  box-shadow: -10px 10px 8px #bd00ff;
+  box-shadow: -10px 10px 8px #00b8ff;
   transform: skew(4deg) rotateY(4deg);
 }
 .form{
@@ -44,10 +50,10 @@ body {
   background-color: #030002e4;
   border-radius: 1.5vmin;
   padding: 3vh;
-  font-size:x-large;
-  border: 2px inset #bd00ff;
-  box-shadow: -10px 10px 8px #bd00ff;
-  transform: skew(4deg) rotateY(4deg);
+  font-size:large;
+  border: 2px inset #00b8ff;
+  box-shadow: 0px 5px 8px #00b8ff;
+
 }
 .addBoard{
   position: fixed;
@@ -55,10 +61,10 @@ body {
   font-size: 3.5vmin;
   border-radius: 1.5vmin;
   padding: 3vh;
-  border: 2px inset #bd00ff;
+  border: 2px inset #00b8ff;
   bottom: 15vh;
   right: 5vw;
-  box-shadow: -10px -10px 8px #bd00ff;
+  box-shadow: -10px -10px 8px #00b8ff;
   transform: skew(-4deg) rotateY(-4deg);
 }
 .pForm{
@@ -76,7 +82,7 @@ li {
   color: #d600ff;
   text-decoration: underline;
   font-weight: bold;
-  text-shadow: 0px 0px 20px #d600ff;
+  text-shadow: 0px 0px 20px #bd00ff;
 }
 
 .boardbox a {
@@ -89,7 +95,7 @@ li {
 .boardbox a:hover {
   color: #ffffff;
   font-weight: bold;
-  background-color: #00b8ff;
+  background-color: #bd00ff;
 }
 a{
   color: #ffffff;
@@ -104,5 +110,5 @@ a{
   padding: 5px;
   color: #ffffff;
   font-weight: bold;
-  background-color: #00b8ff;
+  background-color: #bd00ff;
 }
