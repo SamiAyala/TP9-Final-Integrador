@@ -26,8 +26,19 @@ async function Registrar(){
         data: { Nombre : nombre, Contraseña : contraseña, Contraseña2 : contraseña2, imgUsuario : imgUsuario },
         success:
             function(response) {
-                if (response) alert('YES!');
-                else alert('NO :(');
+                if (response=="Ok") {
+                  $('#registerModal').modal('toggle');
+                  $('#notificationModalBody').html('<h3><b>Successfuly registered, welcome to teh Wired!!</b></h3>')
+                  $('#notificationModal').modal('toggle');
+                }
+                else if (response=="UsernameTaken"){
+                  $('#notificationModalBody').html('<h3><b>Bad news! The username has already been taken, try another one!</b></h3>')
+                  $('#notificationModal').modal('toggle');
+                }
+                else if (response=="PasswordsDontCoincide"){
+                  $('#notificationModalBody').html('<h3><b>The passwords do not coincide, learn to type!</b></h3>')
+                  $('#notificationModal').modal('toggle');
+                }
             },
         error:
         function(xhr, status) {
