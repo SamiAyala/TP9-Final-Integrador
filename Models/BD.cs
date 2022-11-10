@@ -147,5 +147,17 @@ public static class BD
             }
             return U;
         }
+        public static User getUserByName(string Nombre)
+        {
+            User U = null;
+            string SQL = "SELECT * FROM Usuario U";
+            SQL += " WHERE U.Nombre=@pNombre";
+
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                U = db.QueryFirstOrDefault<User> (SQL, new {pNombre=Nombre});
+            }
+            return U;
+        }
     }
 }
