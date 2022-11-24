@@ -1,29 +1,41 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="boardbox" id="boardbox_general">
-    <h3 class="display-4">General</h3>
-    <ul>
-        @foreach (Board item in ViewBag.ListBoard)
-        {
-            <li>
-                <a class="aIndex" href='@Url.Action("CargarBoard", "Home", new{id=@item.IdBoard})'>@item.Nombre</a>
-            </li>
-        }
-    </ul>
+<div class="row">
+    <div class="col-auto position-absolute top-0 start-0 mt-5" id="Boardbox">
+        <h3 class="display-4">General</h3>
+        <ul>
+            @foreach (Board item in ViewBag.ListBoard)
+            {
+                <li>
+                    <a class="aIndex" href='@Url.Action("CargarBoard", "Home", new{id=@item.IdBoard})'>@item.Nombre</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-auto position-absolute bottom-0 end-0 mb-5">
+        <div class="button" id="Addboard">
+        <a type="button" class="aIndex" data-bs-toggle="modal" data-bs-target="#ModalForm"
+            aria-expanded="false" aria-controls="collapseForm">
+            Add Board
+        </a>
+        </div>
+    </div>
 </div>
-<div class="addBoard">
-    <a type="button" class="aIndex" data-bs-toggle="collapse" data-bs-target="#collapseForm"
-        aria-expanded="false" aria-controls="collapseForm">
-        Add Board
-    </a>
-</div>
-<div class="collapse mb-3 mx-auto" id="collapseForm"  style="width:40%;">
-    <div class="form">
-        <form method="post" id="form" action='@Url.Action("AgregarBoard", "Home")'>
+<div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="form">
+            <div class="form">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Create Board</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="" action='@Url.Action("AgregarBoard", "Home")'>
+                        <label>Board name:</label>
             <input required type="text" name="Nombre" class="form-control fw-bold" placeholder="Name">
             <br>
+            <label>Choose a number of maximum posts:</label>
             <select required name="CantMaxPosts" class="form-control">
                 <option selected disabled value="">Choose a number of maximum posts</option>
                 <option value="10">10</option>
@@ -32,8 +44,12 @@
                 <option value="30">30</option>
             </select>
             <p class="pForm">Note: More posts is not always better. It can be slower too.</p>
-            <input type="submit" class="btn btn-dark float-end">
-            <br>
         </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-dark float-end" value="Post">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
