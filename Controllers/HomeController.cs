@@ -1,16 +1,19 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TP9_Final_Integrador.Models;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace TP9_Final_Integrador.Controllers;
 
 public class HomeController : Controller
 {
+    private IWebHostEnvironment Environment;
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(IWebHostEnvironment environment)
     {
-        _logger = logger;
+        Environment = environment;
     }
 
 
@@ -33,10 +36,23 @@ public class HomeController : Controller
         return View("Post");
     }
 
-    public IActionResult AgregarPost(Post p){
+    public void WriteFile(IFormFile File){
+        string wwwRootLocal = this.Environment.ContentRootPath + @"\wwwroot\postFiles\" + File.FileName;
+        using(var stream = System.IO.File.Create(wwwRootLocal)){
+            File.CopyTo(stream);
+        }
+    }
+
+    [HttpPost]
+    public IActionResult AgregarPost(Post p, IFormFile FormFile){
+        if(FormFile.Length>0){
+            WriteFile(FormFile);
+            p.Imagen = FormFile.FileName;
+        }
         p.FechaCreacion = DateTime.Now;
         p.IdUsuario = BD.usuario.idUsuario;
         BD.InsertPost(p);
+
         return RedirectToAction("CargarBoard", "Home", new{id = p.IdBoard});
     }
     
@@ -48,7 +64,10 @@ public class HomeController : Controller
 
     public string Registrar(String Nombre, String Contraseña, String Contraseña2, IFormFile ImgUsuario){
         string str = null;
-        User u = new User(0, Nombre, "pfp.png", Contraseña, false);
+        if (ImgUsuario.Length>0){
+            WriteFile(ImgUsuario);
+        }
+        User u = new User(0, Nombre, ImgUsuario.FileName, Contraseña, false);
         str = BD.InsertUser(u, Contraseña2);
         if (str == "Ok") BD.usuario = BD.getUserByName(Nombre);
         return str;

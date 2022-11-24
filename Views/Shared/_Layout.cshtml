@@ -81,6 +81,35 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" id="FondoTransparente">
+                        <div class="form">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" id="form" action=''>
+                                    <label>Username:</label>
+                                    <input required type="text" id="Nombre" name="Nombre" class="form-control"
+                                        placeholder="Username">
+                                    <br>
+                                    <label>Password:</label>
+                                    <input required type="password" id="Contraseña" name="Contraseña"
+                                        class="form-control" placeholder="Password">
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" id="BoardButton"
+                                    onclick="Login()">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">

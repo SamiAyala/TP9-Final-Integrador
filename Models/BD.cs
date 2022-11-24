@@ -8,7 +8,7 @@ namespace TP9_Final_Integrador.Models
 {
 public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-LUM-05; DataBase=BD;Trusted_Connection=True;";
+        private static string _connectionString = @"Server=A-PHZ2-CIDI-037; DataBase=BD;Trusted_Connection=True;";
         public static User usuario = getUserById(1);
         public static List<Board> GetBoards()
         {
@@ -123,6 +123,7 @@ public static class BD
             }
             return "Ok";
         }
+
         public static List<Post> getPostsByUser(int Id)
         {
             List<Post> Lista = null;

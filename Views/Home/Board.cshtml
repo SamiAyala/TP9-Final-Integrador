@@ -11,7 +11,7 @@
 </div>
 <div class="collapse mb-3 mx-auto" id="collapseForm" style="width:40%;">
     <div class="form">
-        <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")'>
+        <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")' enctype="multipart/form-data">
             <input type="hidden" name="IdBoard" value="@ViewBag.Board.IdBoard">
             <input type="hidden" name="FkPost" value='Null'>
             <input required type="text" name="Titulo" class="form-control fw-bold" placeholder="Title">
@@ -19,7 +19,7 @@
             <textarea required class="form-control" name="Descripcion" rows="5" cols="50" placeholder="Text"
                 class="my-2"></textarea>
             <br>
-            <input type="file" class="float-start pForm" multiple>
+            <input type="file" class="float-start pForm" name="FormFile" multiple>
             <input type="submit" class="btn btn-dark float-end" value="Post">
             <br>
         </form>
@@ -36,8 +36,8 @@
             <div class="row justify-content-around">
                 @foreach (Post item in ViewBag.ListPosts)
                 {
-                <div class="card col-auto mx-2 mb-4" id="cardPost">
-                    <img class="card-img-top" src="@item.Imagen" alt="No Image Available">
+                <div class="card col-auto mx-2 mb-4" id="cardPost" style="width:18rem;">
+                    <img class="card-img-top" style="width:100%; height:auto;" src="/postFiles/@item.Imagen" alt="No Image Available">
                     <div class="card-body">
                         <h5 class="card-title">@item.Titulo</h5>
                         <p class="card-text">@item.Descripcion</p>

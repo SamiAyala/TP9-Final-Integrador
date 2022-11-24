@@ -4,7 +4,7 @@
 <div class="post">
     <div class="row">
         <div class="col-3">
-            <img class="img-fluid" src="@ViewBag.Post.Imagen" alt="No Image Available">
+            <img class="img-fluid" src="/postFiles/@ViewBag.Post.Imagen" alt="No Image Available">
             <h6 class="text-muted">@ViewBag.Post.FechaCreacion.ToShortDateString()</h6>
         </div>
         <div class="col-6">
@@ -28,7 +28,7 @@
                 {
                     <div class="row border-bottom mx-1 mt-3">
                         <div class="col-2">
-                            <img class="img-fluid" src="@item.Imagen" alt="No Image Available">
+                            <img class="img-fluid" src="/postFiles/@item.Imagen" alt="No Image Available">
                             <h5 class="pForm">@item.FechaCreacion.ToShortDateString()</h5>
                             <h6>@item.Nombre</h6>
                         </div>
@@ -52,7 +52,7 @@
 </div>
 <div class="collapse mb-3 mx-auto" id="collapseForm" style="width:40%;">
     <div class="card card-body form">
-        <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")'>
+        <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")' enctype="multipart/form-data">
             <input type="hidden" name="IdUsuario" value='1'>
             <input type="hidden" name="IdBoard" value="@ViewBag.Post.IdBoard">
             <input type="hidden" name="FkPost" value='@ViewBag.Post.IdPost'>
@@ -62,7 +62,7 @@
             <textarea required class="form-control" name="Descripcion" rows="5" cols="50" placeholder="Text"
                 class="my-2"></textarea>
             <br>
-            <input type="file" class="float-start pForm">
+            <input type="file" class="float-start pForm" name="FormFile">
             <input type="submit" class="float-end btn btn-dark " id="BoardButton">
         </form>
     </div>

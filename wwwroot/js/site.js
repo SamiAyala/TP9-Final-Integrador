@@ -47,3 +47,9 @@ async function Registrar(){
     }
 );
 }
+
+async function Login(){
+  var nombre = $("#Nombre").val();
+	var contraseña = await SHA256($("#Contraseña").val());
+  
+}
