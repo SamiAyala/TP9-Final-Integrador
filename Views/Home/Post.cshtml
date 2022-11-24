@@ -41,8 +41,8 @@
             }
             <div class="row mt-3">
                 <div class="col text-center">
-                    <button class="btn btn-dark mb-3" type="button" data-bs-toggle="collapse" id="BoardButton"
-                        data-bs-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+                    <button class="btn btn-dark mb-3" type="button" data-bs-toggle="modal" id="BoardButton"
+                        data-bs-target="#ModalForm" aria-expanded="false" aria-controls="collapseForm">
                         Create Reply
                     </button>
                 </div>
@@ -50,20 +50,33 @@
         }
     </div>
 </div>
-<div class="collapse mb-3 mx-auto" id="collapseForm" style="width:40%;">
-    <div class="card card-body form">
-        <form method="post" id="form" action='@Url.Action("AgregarPost", "Home")'>
+<div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="form">
+            <div class="form">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Create Reply</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="" action='@Url.Action("AgregarPost", "Home")'>
             <input type="hidden" name="IdUsuario" value='1'>
             <input type="hidden" name="IdBoard" value="@ViewBag.Post.IdBoard">
             <input type="hidden" name="FkPost" value='@ViewBag.Post.IdPost'>
             <input type="hidden" name="FechaCreacion" value="11-9-2001">
+            <label>Title:</label>
             <input required type="text" name="Titulo" class="form-control fw-bold" placeholder="Title">
-            <br>
+            <label>Description:</label>
             <textarea required class="form-control" name="Descripcion" rows="5" cols="50" placeholder="Text"
                 class="my-2"></textarea>
-            <br>
-            <input type="file" class="float-start pForm">
-            <input type="submit" class="float-end btn btn-dark " id="BoardButton">
+                <label for="formFile" class="form-label">Upload files:</label>
+                <input class="form-control pForm" type="file" multiple>
         </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-dark float-end" value="Post">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
