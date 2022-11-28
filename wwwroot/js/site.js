@@ -31,6 +31,7 @@ async function Registrar(){
                   $('#notificationModal').modal('toggle');
                   $('#userName-cont').html(nombre);
                   $('#button-cont').css("display", "none");
+                  $('#logout-btn').css("display", "block");
                 }
                 else if (response=="UsernameTaken"){
                   $('#notificationModalBody').html('<h3><b>Bad news! The username has already been taken, try another one!</b></h3>')
@@ -65,12 +66,33 @@ async function Login(){
                   $('#notificationModalBody').html('<h3><b>Successfuly logged in, welcome to teh Wired!!</b></h3>')
                   $('#notificationModal').modal('toggle');
                   $('#userName-cont').html(nombre);
+                  $('#logout-btn').css("display", "block");
                   $('#button-cont').css("display", "none");
                 }
                 else if (response=="Wrong"){
                   $('#notificationModalBody').html('<h3><b>Wrong password/username!</b></h3>')
                   $('#notificationModal').modal('toggle');
                 }
+            },
+        error:
+        function(xhr, status) {
+            alert('Something happened, wasnt good, sorry :(');
+        }
+    }
+);
+}
+
+async function LogOut(){
+  $.ajax(
+    {
+        type: 'POST',
+        datatype: 'JSON',
+        url: '/Home/LogOut',
+        success:
+            function(response) {
+                $('#userName-cont').html(response);
+                $('#logout-btn').css("display", "none");
+                $('#button-cont').css("display", "block");
             },
         error:
         function(xhr, status) {

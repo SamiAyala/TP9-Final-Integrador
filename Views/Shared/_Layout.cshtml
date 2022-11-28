@@ -25,31 +25,55 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home"
+                                asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home" asp-action="Privacy">About
+                            <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">About
                                 Us</a>
                         </li>
                     </ul>
                     <div class="m-3 fs-5" id="userName-cont">
                         @ViewBag.User.Nombre
                     </div>
-                    @if(ViewBag.User.idUsuario == 1){
-                    <div id="button-cont" style="display: block;">
-                        <button type="button" id="headerButton" class="btn btn-dark float-end" data-bs-toggle="modal"
+                    @if (ViewBag.User.idUsuario == 1)
+                    {
+                        <div id="button-cont" style="display: block;">
+                            <button type="button" id="headerButton" class="btn btn-dark float-end" data-bs-toggle="modal"
                             data-bs-target="#loginModal">
-                            Login
-                        </button>
-                        <button type="button" id="headerButton" class="btn btn-dark mx-3 float-end" data-bs-toggle="modal"
-                            data-bs-target="#registerModal">
-                            Register
-                        </button>
-                    </div>
-                    } else {
-                        <button type="button" id="headerButton" class="btn btn-dark float-end" href="">
-                            Logout
-                        </button>
+                                Login
+                            </button>
+                            <button type="button" id="headerButton" class="btn btn-dark mx-3 float-end"
+                            data-bs-toggle="modal" data-bs-target="#registerModal">
+                                Register
+                            </button>
+                        </div>
+                        <div id="logout-btn" style="display: none;">
+                            <button type="button" id="headerButton"
+                            class="btn btn-dark float-end" onclick="LogOut()">
+                                Logout
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div id="button-cont" style="display: none;">
+                            <button type="button" id="headerButton" class="btn btn-dark float-end" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+                                Login
+                            </button>
+                            <button type="button" id="headerButton" class="btn btn-dark mx-3 float-end"
+                            data-bs-toggle="modal" data-bs-target="#registerModal">
+                                Register
+                            </button>
+                        </div>
+                        <div id="logout-btn" style="display: block;">
+                            <button type="button" id="headerButton"
+                            class="btn btn-dark float-end" onclick="LogOut()">
+                                Logout
+                            </button>
+                        </div>
                     }
                 </div>
             </div>
@@ -92,7 +116,7 @@
             <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content"  id="form">
+                    <div class="modal-content" id="form">
                         <div>
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Login</h5>

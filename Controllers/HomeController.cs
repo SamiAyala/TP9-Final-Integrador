@@ -56,6 +56,7 @@ public class HomeController : Controller
         p.IdUsuario = BD.usuario.idUsuario;
         BD.InsertPost(p);
 
+        if(p.FkPost!=null) return RedirectToAction("CargarPost", "Home", new{id = p.FkPost});
         return RedirectToAction("CargarBoard", "Home", new{id = p.IdBoard});
     }
     
@@ -80,8 +81,9 @@ public class HomeController : Controller
         return str;
     }
 
-    public void LogOut(){
+    public string LogOut(){
         BD.usuario = BD.getUserById(1);
+        return BD.usuario.Nombre;
     }
 
     public IActionResult Privacy()
