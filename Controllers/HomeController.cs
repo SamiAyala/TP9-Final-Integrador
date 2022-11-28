@@ -19,6 +19,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.Mod = BD.usuario.Moderador;
         ViewBag.User = BD.usuario;
         ViewBag.ListBoard=BD.GetBoards();
         return View();
@@ -79,6 +80,9 @@ public class HomeController : Controller
         str = BD.CheckUser(Nombre, Contraseña);
         if(str=="Ok") BD.usuario = BD.getUserByName(Nombre);
         return str;
+    }
+    public User getUser(){
+        return BD.usuario;
     }
 
     public string LogOut(){

@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -35,7 +38,15 @@
                         </li>
                     </ul>
                     <div class="m-3 fs-5" id="userName-cont">
-                        @ViewBag.User.Nombre
+                        @if (ViewBag.User.idUsuario != 1)
+                        {
+                            <a style="text-decoration: none;" data-bs-toggle="modal" href="#changeNameModal"
+                            role="button">@ViewBag.User.Nombre</a>
+                        }
+                        else
+                        {
+                            @ViewBag.User.Nombre
+                        }
                     </div>
                     @if (ViewBag.User.idUsuario == 1)
                     {
@@ -50,8 +61,7 @@
                             </button>
                         </div>
                         <div id="logout-btn" style="display: none;">
-                            <button type="button" id="headerButton"
-                            class="btn btn-dark float-end" onclick="LogOut()">
+                            <button type="button" id="headerButton" class="btn btn-dark float-end" onclick="LogOut()">
                                 Logout
                             </button>
                         </div>
@@ -69,8 +79,7 @@
                             </button>
                         </div>
                         <div id="logout-btn" style="display: block;">
-                            <button type="button" id="headerButton"
-                            class="btn btn-dark float-end" onclick="LogOut()">
+                            <button type="button" id="headerButton" class="btn btn-dark float-end" onclick="LogOut()">
                                 Logout
                             </button>
                         </div>
@@ -79,9 +88,30 @@
             </div>
         </nav>
     </header>
+    <div class="modal fade" id="changeNameModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" id="form">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Change Username</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" action='' enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <label>New username:</label>
+                        <input required type="text" id="Username" name="Nombre" class="form-control"
+                            placeholder="New username">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" id="BoardButton"
+                            onclick="()">Change Username</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <main role="main" class="pb-3">
-
             <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">

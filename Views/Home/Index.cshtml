@@ -1,26 +1,37 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<p class="title mx-auto display-1 text-center">chanonical</p>
 <div class="row">
-    <div class="col-auto position-absolute top-0 start-0 mt-5" id="Boardbox">
+    <div class="col-auto mx-auto mt-5" id="Boardbox">
         <h3 class="display-4">Boards</h3>
-        <ul>
+        <ul class="d-flex justify-content-around flex-wrap">
             @foreach (Board item in ViewBag.ListBoard)
             {
-                <li>
-                    <a class="aIndex" href='@Url.Action("CargarBoard", "Home", new{id=@item.IdBoard})'>@item.Nombre</a>
-                </li>
+                <a class="aIndex" href='@Url.Action("CargarBoard", "Home", new{id=@item.IdBoard})'>@item.Nombre</a>
             }
         </ul>
     </div>
-    <div class="col-auto position-absolute bottom-0 end-0 mb-5">
-        <div class="button" id="Addboard">
-            <a type="button" class="aIndex" data-bs-toggle="modal" data-bs-target="#ModalForm" aria-expanded="false"
+    @if (ViewBag.Mod == true)
+    {
+        <div id="Addboard-cont" class="col-auto position-absolute bottom-0 end-0 mb-5" style="display:block;">
+            <div class="button" id="Addboard">
+                <a type="button" class="aIndex" data-bs-toggle="modal" data-bs-target="#ModalForm" aria-expanded="false"
                 aria-controls="collapseForm">
-                Add Board
-            </a>
+                    Add Board
+                </a>
+            </div>
         </div>
-    </div>
+    } else {
+        <div id="Addboard-cont" class="col-auto position-absolute bottom-0 end-0 mb-5" style="display:none;">
+            <div class="button" id="Addboard">
+                <a type="button" class="aIndex" data-bs-toggle="modal" data-bs-target="#ModalForm" aria-expanded="false"
+                aria-controls="collapseForm">
+                    Add Board
+                </a>
+            </div>
+        </div>
+    }
 </div>
 <div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
