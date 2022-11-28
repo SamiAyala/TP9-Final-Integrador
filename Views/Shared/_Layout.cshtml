@@ -32,14 +32,6 @@
                                 Us</a>
                         </li>
                     </ul>
-                    <button type="button" id="headerButton" class="btn btn-dark float-end" data-bs-toggle="modal"
-                        data-bs-target="#loginModal">
-                        Login
-                    </button>
-                    <button type="button" id="headerButton" class="btn btn-dark mx-3 float-end" data-bs-toggle="modal"
-                        data-bs-target="#registerModal">
-                        Register
-                    </button>
                 </div>
             </div>
         </nav>
@@ -57,8 +49,8 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                <form method="post" action=''>
+                            <form method="post" action='' enctype="multipart/form-data">
+                                <div class="modal-body">
                                     <label>Username:</label>
                                     <input required type="text" id="Nombre" name="Nombre" class="form-control"
                                         placeholder="Username">
@@ -68,15 +60,12 @@
                                         class="form-control" placeholder="Password">
                                     <input required type="password" id="Contraseña2" name="Contraseña2"
                                         class="form-control mt-3" placeholder="Confirm password">
-                                    <br>
-                                    <label for="formFile" class="form-label">Profile picture:</label>
-                                    <input class="form-control pForm" type="file" name="imgUsuario" id="imgUsuario">
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-dark" id="BoardButton"
-                                    onclick="Registrar()">Register</button>
-                            </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-dark" id="BoardButton"
+                                        onclick="Registrar()">Register</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -91,8 +80,8 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                <form method="post" id="form" action=''>
+                            <form method="post" id="form" action=''>
+                                <div class="modal-body">
                                     <label>Username:</label>
                                     <input required type="text" id="Nombre" name="Nombre" class="form-control"
                                         placeholder="Username">
@@ -100,12 +89,12 @@
                                     <label>Password:</label>
                                     <input required type="password" id="Contraseña" name="Contraseña"
                                         class="form-control" placeholder="Password">
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-dark" id="BoardButton"
-                                    onclick="Login()">Login</button>
-                            </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-dark" id="BoardButton"
+                                        onclick="Login()">Login</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -114,7 +103,7 @@
             <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-sm modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class="modal-content notificationModal">
                         <div class="modal-body" id="notificationModalBody">
                             You shouldn't be able to see this... oh well ¯\_(ツ)_/¯
                         </div>

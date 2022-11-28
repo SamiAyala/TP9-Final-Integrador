@@ -17,13 +17,12 @@ async function Registrar(){
 	var nombre = $("#Nombre").val();
 	var contraseña = await SHA256($("#Contraseña").val());
   var contraseña2 = await SHA256($("#Contraseña2").val());
-  var imgUsuario = $("#imgUsuario").val();
   $.ajax(
     {
         type: 'POST',
         datatype: 'JSON',
         url: '/Home/Registrar',
-        data: { Nombre : nombre, Contraseña : contraseña, Contraseña2 : contraseña2, imgUsuario : imgUsuario },
+        data: { Nombre : nombre, Contraseña : contraseña, Contraseña2 : contraseña2},
         success:
             function(response) {
                 if (response=="Ok") {
@@ -51,5 +50,28 @@ async function Registrar(){
 async function Login(){
   var nombre = $("#Nombre").val();
 	var contraseña = await SHA256($("#Contraseña").val());
-  
+  $.ajax(
+    {
+        type: 'POST',
+        datatype: 'JSON',
+        url: '/Home/Login',
+        data: { Nombre : nombre, Contraseña : contraseña},
+        success:
+            function(response) {
+                if (response=="Ok") {
+                  $('#loginModal').modal('toggle');
+                  $('#notificationModalBody').html('<h3><b>Successfuly logged in, welcome to teh Wired!!</b></h3>')
+                  $('#notificationModal').modal('toggle');
+                }
+                else if (response=="Wrong"){
+                  $('#notificationModalBody').html('<h3><b>Wrong password/username!</b></h3>')
+                  $('#notificationModal').modal('toggle');
+                }
+            },
+        error:
+        function(xhr, status) {
+            alert('Something happened, wasnt good, sorry :(');
+        }
+    }
+);
 }

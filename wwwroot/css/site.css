@@ -107,6 +107,15 @@ li {
 a{
   color: #ffffff;
 }
+.notificationModal {
+  font-family: 'VT323', monospace;
+  margin-left: 10%;
+  background-color: #030002;
+  font-size: 3.5vmin;
+  border-radius: 1.5vmin;
+  padding: 1%;
+  border: 2px inset #00b8ff;
+}
 .aIndex {
   text-decoration: none;
   color: #ffffff;

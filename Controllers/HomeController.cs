@@ -45,7 +45,7 @@ public class HomeController : Controller
 
     [HttpPost]
     public IActionResult AgregarPost(Post p, IFormFile FormFile){
-        if(FormFile.Length>0){
+        if(FormFile != null){
             WriteFile(FormFile);
             p.Imagen = FormFile.FileName;
         }
@@ -62,14 +62,18 @@ public class HomeController : Controller
         return RedirectToAction("Index","Home");
     }
 
-    public string Registrar(String Nombre, String Contraseña, String Contraseña2, IFormFile ImgUsuario){
+    public string Registrar(String Nombre, String Contraseña, String Contraseña2){
         string str = null;
-        if (ImgUsuario.Length>0){
-            WriteFile(ImgUsuario);
-        }
-        User u = new User(0, Nombre, ImgUsuario.FileName, Contraseña, false);
+        User u = new User(0, Nombre, Contraseña, false);
         str = BD.InsertUser(u, Contraseña2);
         if (str == "Ok") BD.usuario = BD.getUserByName(Nombre);
+        return str;
+    }
+
+    public string Login(String Nombre, String Contraseña){
+        string str = null;
+        str = BD.CheckUser(Nombre, Contraseña);
+        if(str=="Ok") BD.usuario = BD.getUserByName(Nombre);
         return str;
     }
 

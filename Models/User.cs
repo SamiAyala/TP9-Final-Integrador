@@ -10,9 +10,6 @@ namespace TP9_Final_Integrador.Models{
         private string _Nombre;
         public string Nombre { get { return _Nombre;} set { _Nombre=value;}}
 
-        private string _ImgUsuario;
-        public string ImgUsuario { get {return _ImgUsuario;} set {_ImgUsuario=value;}}
-
         private string _Contraseña;
         public string Contraseña { get {return _Contraseña;} set { _Contraseña=value;}}
 
@@ -22,11 +19,10 @@ namespace TP9_Final_Integrador.Models{
         public User()
         {}
 
-        public User(int IdUsuario, string Nombre, string ImgUsuario, string Contraseña, bool Moderador)
+        public User(int IdUsuario, string Nombre, string Contraseña, bool Moderador)
         {
             _IdUsuario=idUsuario;
             _Nombre=Nombre;
-            _ImgUsuario=ImgUsuario;
             _Contraseña=Contraseña;
             _Moderador=Moderador;
         }

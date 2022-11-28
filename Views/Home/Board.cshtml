@@ -17,24 +17,23 @@
                     <h5 class="modal-title" id="">Create Post</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form method="post" id="" action='@Url.Action("AgregarPost", "Home")'>
+                <form method="post" id="" action='@Url.Action("AgregarPost", "Home")' enctype="multipart/form-data">
+                    <div class="modal-body">
                         <input type="hidden" name="IdBoard" value="@ViewBag.Board.IdBoard">
                         <input type="hidden" name="FkPost" value='Null'>
                         <label>Title:</label>
                         <input required type="text" name="Titulo" class="form-control fw-bold" placeholder="Title">
                         <br>
-                        <label>Description</label>
-                        <textarea required class="form-control" name="Descripcion" rows="5" cols="50" placeholder="Text"
-                            class="my-2"></textarea>
+                        <label>Description:</label>
+                        <textarea required class="form-control" name="Descripcion" rows="5" cols="50" placeholder="Text" class="my-2"></textarea>
                         <br>
                         <label>Upload Files:</label>
-                        <input type="file" class="form-control pForm" multiple>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-dark float-end" value="Post">
-                </div>
+                        <input required type="file" class="form-control pForm" name="FormFile">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-dark float-end" value="Post">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -51,7 +50,7 @@
                 @foreach (Post item in ViewBag.ListPosts)
                 {
                     <div class="card col-auto mx-2 mb-4" id="cardPost">
-                        <img class="card-img-top" src="@item.Imagen" alt="No Image Available">
+                        <img class="card-img-top" src="/postFiles/@item.Imagen" alt="No Image Available">
                         <div class="card-body">
                             <h5 class="card-title">@item.Titulo</h5>
                             <p class="card-text">@item.Descripcion</p>

@@ -8,7 +8,7 @@ namespace TP9_Final_Integrador.Models
 {
 public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-033; DataBase=BD;Trusted_Connection=True;";
+        private static string _connectionString = @"Server=DESKTOP-BS3AF2L\SQLEXPRESS; DataBase=BD;Trusted_Connection=True;";
         public static User usuario = getUserById(1);
         public static List<Board> GetBoards()
         {
@@ -103,7 +103,6 @@ public static class BD
         }
         public static string InsertUser(User item, string Contraseña2)
         {
-        
             string SQL = "SELECT COUNT(Nombre) FROM Usuario U WHERE U.Nombre = @pNombre";
             if (item.Contraseña != Contraseña2) return "PasswordsDontCoincide";
             using(SqlConnection db = new SqlConnection(_connectionString))
@@ -112,18 +111,28 @@ public static class BD
                     pNombre = item.Nombre
                 }); 
                 if (i > 0) return "UsernameTaken";
-                SQL = "INSERT INTO Usuario(Nombre, imgUsuario, Contraseña, Moderador)";
-                SQL += " VALUES (@pNombre, @pImgUsuario, @pContraseña, @pModerador)";
+                SQL = "INSERT INTO Usuario(Nombre, Contraseña, Moderador)";
+                SQL += " VALUES (@pNombre, @pContraseña, @pModerador)";
                 db.Execute(SQL, new {
                     pNombre = item.Nombre,
-                    pImgUsuario = item.ImgUsuario,
                     pContraseña = item.Contraseña,
                     pModerador = item.Moderador
                 });
             }
             return "Ok";
         }
-
+        public static string CheckUser(String Nombre, String Contraseña)
+        {
+            string SQL = "SELECT COUNT(Nombre) FROM Usuario WHERE contraseña = @pContraseña AND Nombre = @pNombre";
+            using(SqlConnection db = new SqlConnection(_connectionString)){
+                int i = db.QueryFirstOrDefault<int>(SQL, new {
+                    pNombre = Nombre,
+                    pContraseña = Contraseña
+                });
+                if (i==0) return "Wrong";
+            }
+            return "Ok";
+        }
         public static List<Post> getPostsByUser(int Id)
         {
             List<Post> Lista = null;
