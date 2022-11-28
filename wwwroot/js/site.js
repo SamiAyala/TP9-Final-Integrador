@@ -14,8 +14,8 @@ async function checkHashed(input, result) {
 }
 
 async function Registrar(){
-	var nombre = $("#Nombre").val();
-	var contraseña = await SHA256($("#Contraseña").val());
+	var nombre = $("#NombreRegister").val();
+	var contraseña = await SHA256($("#ContraseñaRegister").val());
   var contraseña2 = await SHA256($("#Contraseña2").val());
   $.ajax(
     {
@@ -29,6 +29,8 @@ async function Registrar(){
                   $('#registerModal').modal('toggle');
                   $('#notificationModalBody').html('<h3><b>Successfuly registered, welcome to teh Wired!!</b></h3>')
                   $('#notificationModal').modal('toggle');
+                  $('#userName-cont').html(nombre);
+                  $('#button-cont').css("display", "none");
                 }
                 else if (response=="UsernameTaken"){
                   $('#notificationModalBody').html('<h3><b>Bad news! The username has already been taken, try another one!</b></h3>')
@@ -48,8 +50,8 @@ async function Registrar(){
 }
 
 async function Login(){
-  var nombre = $("#Nombre").val();
-	var contraseña = await SHA256($("#Contraseña").val());
+  var nombre = $("#NombreLogin").val();
+	var contraseña = await SHA256($("#ContraseñaLogin").val());
   $.ajax(
     {
         type: 'POST',
@@ -62,6 +64,8 @@ async function Login(){
                   $('#loginModal').modal('toggle');
                   $('#notificationModalBody').html('<h3><b>Successfuly logged in, welcome to teh Wired!!</b></h3>')
                   $('#notificationModal').modal('toggle');
+                  $('#userName-cont').html(nombre);
+                  $('#button-cont').css("display", "none");
                 }
                 else if (response=="Wrong"){
                   $('#notificationModalBody').html('<h3><b>Wrong password/username!</b></h3>')

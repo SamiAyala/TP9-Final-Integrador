@@ -19,18 +19,21 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.User = BD.usuario;
         ViewBag.ListBoard=BD.GetBoards();
         return View();
     }
 
     public IActionResult CargarBoard(int id)
     {
+        ViewBag.User = BD.usuario;
         ViewBag.Board=BD.GetBoardById(id);
         ViewBag.ListPosts=BD.GetPostsByBoard(id);
         return View("Board");
     }
     public IActionResult CargarPost(int id)
     {
+        ViewBag.User = BD.usuario;
         ViewBag.Post=BD.GetPostById(id);
         ViewBag.ListReplies=BD.getPostsByFkPost(id);
         return View("Post");
@@ -77,8 +80,13 @@ public class HomeController : Controller
         return str;
     }
 
+    public void LogOut(){
+        BD.usuario = BD.getUserById(1);
+    }
+
     public IActionResult Privacy()
     {
+        ViewBag.User = BD.usuario;
         return View();
     }
 
