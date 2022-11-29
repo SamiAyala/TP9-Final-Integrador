@@ -149,6 +149,10 @@ a{
   border: 2px inset #00b8ff;
   font-family: 'VT323', monospace;
 }
+#BoardButtonDelete{
+  border: 2px inset #ff0000;
+  font-family: 'VT323', monospace;
+}
 .BoardPosts h2{
   text-shadow: 3px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000;
 }

@@ -26,7 +26,7 @@ async function Registrar() {
 			if (response == "Ok") {
 				$("#registerModal").modal("toggle");
 				$("#notificationModalBody").html(
-					"<h3><b>Successfuly registered, welcome to teh Wired!!</b></h3>"
+					"<h3><b>Successfuly registered, welcome to Chanonical!!</b></h3>"
 				);
 				$("#notificationModal").modal("toggle");
 				$("#userName-cont").html(nombre);
@@ -62,7 +62,7 @@ async function Login() {
 			if (response == "Ok") {
 				$("#loginModal").modal("toggle");
 				$("#notificationModalBody").html(
-					"<h3><b>Successfuly logged in, welcome to teh Wired!!</b></h3>"
+					"<h3><b>Successfuly logged in, welcome to Chanonical!!</b></h3>"
 				);
 				$("#notificationModal").modal("toggle");
 				$("#userName-cont").html(nombre);

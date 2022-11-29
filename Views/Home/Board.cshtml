@@ -28,7 +28,7 @@
                         <textarea required class="form-control" name="Descripcion" rows="5" cols="50" placeholder="Text" class="my-2"></textarea>
                         <br>
                         <label>Upload Files:</label>
-                        <input required type="file" class="form-control pForm" name="FormFile">
+                        <input type="file" class="form-control pForm" name="FormFile">
                     </div>
                     <div class="modal-footer">
                         <input type="submit" class="btn btn-dark float-end" value="Post">
@@ -59,6 +59,10 @@
                             <h6 class="card-subtitle mb-2 text-muted">@item.FechaCreacion.ToShortDateString()</h6>
                             <a class="btn btn-dark" id="BoardButton"
                         href='@Url.Action("CargarPost", "Home", new{id=@item.IdPost})'>See Post</a>
+                        @{if(ViewBag.User.Moderador){
+                        <a class="btn btn-dark" id="BoardButtonDelete"
+                        href='@Url.Action("deletePost", "Home", new{id=@item.IdPost})'>Delete Post</a>}
+                        }
                         </div>
                     </div>
                 }
