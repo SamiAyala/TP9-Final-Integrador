@@ -97,14 +97,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="post" action='' enctype="multipart/form-data">
+                    <input type="hidden" id="ID" value="@ViewBag.User.idUsuario">
                     <div class="modal-body">
                         <label>New username:</label>
-                        <input required type="text" id="Username" name="Nombre" class="form-control"
+                        <input required type="text" id="NewUsername" name="Nombre" class="form-control"
                             placeholder="New username">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-dark" id="BoardButton"
-                            onclick="()">Change Username</button>
+                            onclick="ChangeName()">Change Username</button>
                     </div>
                 </form>
             </div>
@@ -182,6 +183,19 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="notificationModalR" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content notificationModal">
+                        <div class="modal-body" id="notificationModalBodyR">
+                            You shouldn't be able to see this... oh well ¯\_(ツ)_/¯
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="window.location.reload(true)">OK!</button>
                         </div>
                     </div>
                 </div>

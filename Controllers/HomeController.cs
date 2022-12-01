@@ -72,6 +72,15 @@ public class HomeController : Controller
         return RedirectToAction("Index", "Home");
     }
 
+    public string ChangeName(string name, int id) {
+        User U = BD.getUserByName(name);
+        if(U == null) {
+            BD.ChangeUsername(name, id);
+            return "Ok";
+        }
+        return "NameTaken";
+    }
+
     public string Registrar(String Nombre, String Contraseña, String Contraseña2)
     {
         string str = null;
@@ -110,13 +119,14 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-    public IActionResult deletePost(int Id)
+    public IActionResult deletePost(int Id, int idBoard)
     {
         BD.DeletePostById(Id);
-        return RedirectToAction("Index");
+        return RedirectToAction("CargarBoard", new {id = idBoard}); 
     }
-    public void deleteBoard(int Id)
+    public IActionResult deleteBoard(int Id)
     {
         BD.DeleteBoardById(Id);
+        return RedirectToAction("Index");
     }
 }

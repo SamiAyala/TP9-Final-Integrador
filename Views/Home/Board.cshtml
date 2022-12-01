@@ -9,8 +9,7 @@
         Create Post
     </button>
     @{if(ViewBag.User.Moderador){
-                        @* <a class="btn btn-dark" id="BoardButtonDelete" href='@Url.Action("deleteBoard", "Home", new{id=@ViewBag.Board.IdBoard})'>Delete Board</a> *@
-                        <a class="btn btn-dark" id="BoardButtonDelete" onclick=''>Delete Board</a>
+                        <a class="btn btn-dark" id="BoardButtonDelete" href='@Url.Action("deleteBoard", "Home", new{id=@ViewBag.Board.IdBoard})'>Delete Board</a> 
                         }
                         }
 </div>
@@ -66,7 +65,7 @@
                         href='@Url.Action("CargarPost", "Home", new{id=@item.IdPost})'>See Post</a>
                         @{if(ViewBag.User.Moderador){
                         <a class="btn btn-dark" id="BoardButtonDelete"
-                        href='@Url.Action("deletePost", "Home", new{id=@item.IdPost})'>Delete Post</a>}
+                        href='@Url.Action("deletePost", "Home", new{id=@item.IdPost,idBoard=@item.IdBoard})'>Delete Post</a>}
                         }
                         </div>
                     </div>

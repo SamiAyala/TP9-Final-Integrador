@@ -27,7 +27,7 @@ public static class BD
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
                 b = db.QueryFirstOrDefault<Board>(SQL, new{@pId = id}); 
-            }
+            } 
             return b;
         }
         public static Post GetPostById(int id)
@@ -164,6 +164,13 @@ public static class BD
                 U = db.QueryFirstOrDefault<User> (SQL, new {pId=Id});
             }
             return U;
+        }
+        public static void ChangeUsername(string Name, int id){
+            string SQL = "UPDATE Usuario SET Nombre=@pNombre WHERE IdUsuario=@pId";
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                db.Execute(SQL, new {pNombre=Name, pId = id });
+            }
         }
         public static User getUserByName(string Nombre)
         {
