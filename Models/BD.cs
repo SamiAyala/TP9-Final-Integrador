@@ -8,7 +8,7 @@ namespace TP9_Final_Integrador.Models
 {
 public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-CIDI-016; DataBase=BD;Trusted_Connection=True;";
+        private static string _connectionString = @"Server=DESKTOP-BS3AF2L\SQLEXPRESS; DataBase=BD;Trusted_Connection=True;";
         public static User usuario = getUserById(1);
         public static List<Board> GetBoards()
         {
@@ -156,6 +156,13 @@ public static class BD
                 U = db.QueryFirstOrDefault<User> (SQL, new {pId=Id});
             }
             return U;
+        }
+        public static void ChangeUsername(string Name, int id){
+            string SQL = "UPDATE Usuario SET Nombre=@pNombre WHERE IdUsuario=@pId";
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                db.Execute(SQL, new {pNombre=Name, pId = id });
+            }
         }
         public static User getUserByName(string Nombre)
         {

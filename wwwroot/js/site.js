@@ -25,10 +25,10 @@ async function Registrar() {
 		success: function (response) {
 			if (response == "Ok") {
 				$("#registerModal").modal("toggle");
-				$("#notificationModalBody").html(
+				$("#notificationModalBodyR").html(
 					"<h3><b>Successfuly registered, welcome to Chanonical!!</b></h3>"
 				);
-				$("#notificationModal").modal("toggle");
+				$("#notificationModalR").modal("toggle");
 				$("#userName-cont").html(nombre);
 				$("#button-cont").css("display", "none");
 				$("#logout-btn").css("display", "block");
@@ -61,16 +61,45 @@ async function Login() {
 		success: function (response) {
 			if (response == "Ok") {
 				$("#loginModal").modal("toggle");
-				$("#notificationModalBody").html(
+				$("#notificationModalBodyR").html(
 					"<h3><b>Successfuly logged in, welcome to Chanonical!!</b></h3>"
 				);
-				$("#notificationModal").modal("toggle");
+				$("#notificationModalR").modal("toggle");
 				$("#userName-cont").html(nombre);
 				$("#logout-btn").css("display", "block");
 				$("#button-cont").css("display", "none");
 			} else if (response == "Wrong") {
 				$("#notificationModalBody").html(
 					"<h3><b>Wrong password/username!</b></h3>"
+				);
+				$("#notificationModal").modal("toggle");
+			}
+		},
+		error: function (xhr, status) {
+			alert("Something happened, wasnt good, sorry :(");
+		},
+	});
+}
+
+async function ChangeName() {
+	var nombre = $("#NewUsername").val();
+	var ID = $("#ID").val();
+	$.ajax({
+		type: "POST",
+		datatype: "JSON",
+		url: "/Home/ChangeName",
+		data: { name: nombre, id: ID },
+		success: function (response) {
+			if (response == "Ok") {
+				$("#notificationModalBodyR").html(
+					"<h3><b>Successfuly changed username!</b></h3>"
+				);
+				$("#notificationModalR").modal("toggle");
+				$("#changeNameModal").modal("toggle");
+				$("#userName-cont").html(nombre);
+			} else if (response == "NameTaken") {
+				$("#notificationModalBody").html(
+					"<h3><b>This name has already been taken!</b></h3>"
 				);
 				$("#notificationModal").modal("toggle");
 			}
@@ -90,6 +119,7 @@ async function LogOut() {
 			$("#userName-cont").html(response);
 			$("#logout-btn").css("display", "none");
 			$("#button-cont").css("display", "block");
+			window.location.reload(true);
 		},
 		error: function (xhr, status) {
 			alert("Something happened, wasnt good, sorry :(");
