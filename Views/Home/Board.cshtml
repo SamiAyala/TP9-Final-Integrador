@@ -8,6 +8,11 @@
         data-bs-target="#ModalForm" aria-expanded="false" aria-controls="ModalForm">
         Create Post
     </button>
+    @{if(ViewBag.User.Moderador){
+                        @* <a class="btn btn-dark" id="BoardButtonDelete" href='@Url.Action("deleteBoard", "Home", new{id=@ViewBag.Board.IdBoard})'>Delete Board</a> *@
+                        <a class="btn btn-dark" id="BoardButtonDelete" onclick=''>Delete Board</a>
+                        }
+                        }
 </div>
 <div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

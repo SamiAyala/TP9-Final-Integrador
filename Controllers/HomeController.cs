@@ -113,6 +113,10 @@ public class HomeController : Controller
     public IActionResult deletePost(int Id)
     {
         BD.DeletePostById(Id);
-        return View("Index"); 
+        return RedirectToAction("Index");
+    }
+    public void deleteBoard(int Id)
+    {
+        BD.DeleteBoardById(Id);
     }
 }
